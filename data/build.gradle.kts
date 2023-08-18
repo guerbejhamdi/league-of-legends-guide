@@ -22,13 +22,13 @@ android {
 
     buildTypes {
         named("debug") {
-            buildConfigField(
-                "String", "BASE_URL", "\"" + Dependencies.Environments.debugBaseUrl + "\""
-            )
+            buildConfigField("String", "BASE_URL", "\"" + Dependencies.Environments.debugBaseUrl + "\"")
+            buildConfigField("String", "LOL_VERSION", "\"" + Dependencies.Environments.lolVersion  + "\"")
         }
         named("release") {
             isMinifyEnabled = true
             buildConfigField("String", "BASE_URL", "\"" + Dependencies.Environments.releaseBaseUrl + "\"")
+            buildConfigField("String", "LOL_VERSION", "\"" + Dependencies.Environments.lolVersion  + "\"")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -53,6 +53,8 @@ dependencies {
     implementation(Dependencies.Libraries.retrofit_converter_gson)
 
     implementation(Dependencies.Libraries.hilt_android)
+    implementation(project(mapOf("path" to ":domain")))
+    implementation(project(mapOf("path" to ":common")))
     testImplementation(Dependencies.Libraries.junit)
     androidTestImplementation(Dependencies.Libraries.junit_ext)
     androidTestImplementation(Dependencies.Libraries.espresso)

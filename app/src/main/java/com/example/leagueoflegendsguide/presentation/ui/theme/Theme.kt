@@ -1,4 +1,4 @@
-package com.example.leagueoflegendsguide.ui.theme
+package com.example.leagueoflegendsguide.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

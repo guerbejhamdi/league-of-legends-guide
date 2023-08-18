@@ -1,4 +1,4 @@
-package com.example.leagueoflegendsguide.ui.theme
+package com.example.leagueoflegendsguide.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

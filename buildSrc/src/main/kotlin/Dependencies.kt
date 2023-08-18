@@ -17,10 +17,6 @@ object Dependencies {
         const val materiel = "1.9.0"
     }
 
-    object ClassPaths {
-        const val hiltAndroidGradlePlugin =
-            "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltVersion}"
-    }
 
     object Libraries {
         const val hilt_android = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
@@ -56,8 +52,9 @@ object Dependencies {
     }
 
     object Environments {
-        const val debugBaseUrl = "https://github.com/guerbejhamdi/"
-        const val releaseBaseUrl = "https://github.com/guerbejhamdi/"
+        const val debugBaseUrl = "https://ddragon.leagueoflegends.com/cdn"
+        const val releaseBaseUrl = "https://ddragon.leagueoflegends.com/cdn"
+        const val lolVersion = "11.6.1"
     }
 
 
