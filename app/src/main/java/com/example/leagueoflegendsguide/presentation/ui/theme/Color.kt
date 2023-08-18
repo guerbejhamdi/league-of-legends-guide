@@ -1,4 +1,4 @@
-package com.example.leagueoflegendsguide.ui.theme
+package com.example.leagueoflegendsguide.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

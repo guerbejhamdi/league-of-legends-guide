@@ -40,6 +40,7 @@ dependencies {
     implementation(Dependencies.Libraries.AndroidX.appcompat)
     implementation(Dependencies.Libraries.android_materiel)
     implementation(Dependencies.Libraries.hilt_android)
+    implementation(project(mapOf("path" to ":common")))
 
     testImplementation(Dependencies.Libraries.junit)
     androidTestImplementation(Dependencies.Libraries.junit_ext)
