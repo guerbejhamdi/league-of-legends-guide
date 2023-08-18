@@ -74,6 +74,8 @@ dependencies {
     //Hilt
     implementation(Dependencies.Libraries.hilt_android)
     implementation(Dependencies.Libraries.hilt_navigation_compose)
+    implementation(project(mapOf("path" to ":data")))
+    implementation(project(mapOf("path" to ":domain")))
 
     kapt(Dependencies.Libraries.hilt_compiler)
 
