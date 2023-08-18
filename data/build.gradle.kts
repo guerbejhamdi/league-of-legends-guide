@@ -7,18 +7,28 @@ plugins {
 
 android {
     namespace = "com.example.data"
-    compileSdk = 33
+    compileSdk = ConfigurationData.compileSdk
+
+    buildFeatures {
+        buildConfig = true
+    }
 
     defaultConfig {
-        minSdk = 26
+        minSdk = ConfigurationData.minSdk
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = Dependencies.Libraries.testInstrumentationRunner
         consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = false
+        named("debug") {
+            buildConfigField(
+                "String", "BASE_URL", "\"" + Dependencies.Environments.debugBaseUrl + "\""
+            )
+        }
+        named("release") {
+            isMinifyEnabled = true
+            buildConfigField("String", "BASE_URL", "\"" + Dependencies.Environments.releaseBaseUrl + "\"")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -30,20 +40,20 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(Dependencies.Libraries.AndroidX.android_core_ktx)
+    implementation(Dependencies.Libraries.AndroidX.appcompat)
+    implementation(Dependencies.Libraries.android_materiel)
+    implementation(Dependencies.Libraries.retrofit)
+    implementation(Dependencies.Libraries.retrofit_converter_gson)
 
-    implementation("com.google.dagger:hilt-android:2.44")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(Dependencies.Libraries.hilt_android)
+    testImplementation(Dependencies.Libraries.junit)
+    androidTestImplementation(Dependencies.Libraries.junit_ext)
+    androidTestImplementation(Dependencies.Libraries.espresso)
 }
