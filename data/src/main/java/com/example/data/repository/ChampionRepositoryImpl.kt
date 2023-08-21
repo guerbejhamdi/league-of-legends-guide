@@ -1,5 +1,6 @@
 package com.example.data.repository
 
+import android.util.Log
 import com.example.common.Resource
 import com.example.data.models.toChampion
 import com.example.data.remote.ChampionApi
@@ -20,6 +21,7 @@ class ChampionRepositoryImpl @Inject constructor(
         try {
             val championsData = championApi.getAllChampions()
             val champions = championsData.data.map { it.value.toChampion() }
+            Log.d("ChampionRepositoryImpl", "getAllChampions: $champions")
             emit(Resource.Success(champions))
         } catch (e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred"))

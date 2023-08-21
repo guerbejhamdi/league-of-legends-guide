@@ -36,6 +36,8 @@ android {
 }
 
 dependencies {
+    implementation(Dependencies.Libraries.okhttp)
+    implementation(Dependencies.Libraries.timber)
 
     implementation(Dependencies.Libraries.AndroidX.android_core_ktx)
     implementation(Dependencies.Libraries.AndroidX.appcompat)
