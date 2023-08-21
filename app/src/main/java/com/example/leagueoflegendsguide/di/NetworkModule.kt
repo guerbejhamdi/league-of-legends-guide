@@ -1,5 +1,6 @@
 package com.example.leagueoflegendsguide.di
 
+import com.example.common.RequestDebugInterceptor
 import com.example.data.BuildConfig
 import com.example.data.remote.ChampionApi
 import dagger.Module
@@ -17,12 +18,23 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideChampionApi() : ChampionApi {
-        return Retrofit.Builder()
-            .baseUrl(("${BuildConfig.BASE_URL}/${BuildConfig.LOL_VERSION}/"))
-            .addConverterFactory(GsonConverterFactory.create())
+    fun provideRequestDebugInterceptor(): RequestDebugInterceptor {
+        return RequestDebugInterceptor()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(interceptor: RequestDebugInterceptor): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(interceptor)
             .build()
-            .create(ChampionApi::class.java)
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideChampionApi(retrofit : Retrofit) : ChampionApi {
+        return retrofit.create(ChampionApi::class.java)
     }
 
 
