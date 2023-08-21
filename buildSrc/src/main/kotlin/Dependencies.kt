@@ -15,6 +15,7 @@ object Dependencies {
         const val composeBom = "2023.03.00"
         const val appcompatVersion = "1.6.1"
         const val materiel = "1.9.0"
+        const val timber = "5.0.1"
     }
 
 
@@ -29,7 +30,8 @@ object Dependencies {
         const val junit_ext = "androidx.test.ext:junit:${Versions.junitExtVersion}"
         const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
         const val android_materiel = "com.google.android.material:material:${Versions.materiel}"
-
+        const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+        const val okhttp = "com.squareup.okhttp3:okhttp:4.9.1"
 
         object AndroidX {
             const val android_core_ktx = "androidx.core:core-ktx:${Versions.coreKtxVersion}"
@@ -54,7 +56,7 @@ object Dependencies {
     object Environments {
         const val debugBaseUrl = "https://ddragon.leagueoflegends.com/cdn"
         const val releaseBaseUrl = "https://ddragon.leagueoflegends.com/cdn"
-        const val lolVersion = "11.6.1"
+        const val lolVersion = "13.16.1"
     }
 
 

@@ -76,8 +76,13 @@ dependencies {
     implementation(Dependencies.Libraries.hilt_navigation_compose)
     implementation(project(mapOf("path" to ":data")))
     implementation(project(mapOf("path" to ":domain")))
+    implementation(project(mapOf("path" to ":common")))
 
-    kapt(Dependencies.Libraries.hilt_compiler)
+    // logger
+    implementation(Dependencies.Libraries.timber)
+
+
+            kapt(Dependencies.Libraries.hilt_compiler)
 
 
     implementation(Dependencies.Libraries.retrofit)
