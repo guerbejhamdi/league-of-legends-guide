@@ -1,8 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-    id("com.google.dagger.hilt.android") version "2.44.2"
+    id("com.google.dagger.hilt.android") version "2.48" apply false
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -70,6 +70,7 @@ dependencies {
     implementation(Dependencies.Libraries.Compose.compose_ui_graphics)
     implementation(Dependencies.Libraries.Compose.ui_preview)
     implementation(Dependencies.Libraries.Compose.compose_material3)
+    implementation(Dependencies.Libraries.glide)
 
     //Hilt
     implementation(Dependencies.Libraries.hilt_android)
@@ -82,7 +83,7 @@ dependencies {
     implementation(Dependencies.Libraries.timber)
 
 
-            kapt(Dependencies.Libraries.hilt_compiler)
+    ksp(Dependencies.Libraries.hilt_compiler)
 
 
     implementation(Dependencies.Libraries.retrofit)
@@ -96,8 +97,4 @@ dependencies {
     androidTestImplementation(Dependencies.Libraries.Compose.compose_ui_test_junit)
     debugImplementation(Dependencies.Libraries.Compose.compose_ui_tooling)
     debugImplementation(Dependencies.Libraries.Compose.compose_ui_test_manifest)
-}
-
-kapt{
-    correctErrorTypes = true
 }
