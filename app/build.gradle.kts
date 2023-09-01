@@ -1,7 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.dagger.hilt.android") version "2.48" apply false
+    id("org.jetbrains.kotlin.jvm") version "1.9.10" apply false
+    id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
 }
 
@@ -51,7 +52,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.3"
     }
     packaging {
         resources {
@@ -73,6 +74,7 @@ dependencies {
     implementation(Dependencies.Libraries.glide)
 
     //Hilt
+    ksp(Dependencies.Libraries.hilt_compiler)
     implementation(Dependencies.Libraries.hilt_android)
     implementation(Dependencies.Libraries.hilt_navigation_compose)
     implementation(project(mapOf("path" to ":data")))
@@ -83,7 +85,6 @@ dependencies {
     implementation(Dependencies.Libraries.timber)
 
 
-    ksp(Dependencies.Libraries.hilt_compiler)
 
 
     implementation(Dependencies.Libraries.retrofit)

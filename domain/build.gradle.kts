@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("com.google.dagger.hilt.android") version "2.48" apply false
+    id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
 }
 
@@ -41,6 +41,7 @@ dependencies {
     implementation(Dependencies.Libraries.AndroidX.appcompat)
     implementation(Dependencies.Libraries.android_materiel)
     implementation(Dependencies.Libraries.hilt_android)
+    ksp(Dependencies.Libraries.hilt_compiler)
     implementation(project(mapOf("path" to ":common")))
 
     testImplementation(Dependencies.Libraries.junit)
