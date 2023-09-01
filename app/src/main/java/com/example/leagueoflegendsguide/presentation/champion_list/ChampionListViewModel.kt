@@ -32,22 +32,22 @@ class ChampionListViewModel @Inject constructor(
                 when (result) {
                     is Resource.Success -> {
                         //Log success
-                        Timber.tag("ChampionListViewModel").d("Champions Success")
+                        Timber.d("Champions Success")
                         //Display number of champions in Logcat
-                        Timber.tag("ChampionListViewModel").d("Champions: ${result.data?.size}")
+                        Timber.d("Champions: ${result.data?.size}")
                         //Update the state with the new list of champions
                         _state.value =  ChampionListState(champions = result.data ?: emptyList())
                     }
 
                     is Resource.Error -> {
-                        Timber.tag("ChampionListViewModel").d("Champions Error")
+                        Timber.d("Champions Error")
                         //Update the state with the error message
                         _state.value = ChampionListState(error = result.message ?: "An unexpected error occurred")
                     }
 
                     is Resource.Loading -> {
                         //Log the loading state in Logcat
-                        Timber.tag("ChampionListViewModel").d("Loading...")
+                        Timber.d("Loading...")
                         //Update the state with the loading state
                         _state.value = ChampionListState(isLoading = true)
                     }
