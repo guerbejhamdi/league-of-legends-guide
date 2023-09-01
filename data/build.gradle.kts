@@ -1,8 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("com.google.dagger.hilt.android") version "2.44.2" apply false
-
+    id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -53,6 +53,7 @@ dependencies {
     implementation(Dependencies.Libraries.retrofit_converter_gson)
 
     implementation(Dependencies.Libraries.hilt_android)
+    ksp(Dependencies.Libraries.hilt_compiler)
     implementation(project(mapOf("path" to ":domain")))
     implementation(project(mapOf("path" to ":common")))
     testImplementation(Dependencies.Libraries.junit)
