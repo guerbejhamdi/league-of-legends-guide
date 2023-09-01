@@ -1,8 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-    id("com.google.dagger.hilt.android") version "2.44.2"
+    id("org.jetbrains.kotlin.jvm") version "1.9.10" apply false
+    id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -51,7 +52,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.3"
     }
     packaging {
         resources {
@@ -70,8 +71,10 @@ dependencies {
     implementation(Dependencies.Libraries.Compose.compose_ui_graphics)
     implementation(Dependencies.Libraries.Compose.ui_preview)
     implementation(Dependencies.Libraries.Compose.compose_material3)
+    implementation(Dependencies.Libraries.glide)
 
     //Hilt
+    ksp(Dependencies.Libraries.hilt_compiler)
     implementation(Dependencies.Libraries.hilt_android)
     implementation(Dependencies.Libraries.hilt_navigation_compose)
     implementation(project(mapOf("path" to ":data")))
@@ -82,7 +85,6 @@ dependencies {
     implementation(Dependencies.Libraries.timber)
 
 
-            kapt(Dependencies.Libraries.hilt_compiler)
 
 
     implementation(Dependencies.Libraries.retrofit)
@@ -96,8 +98,4 @@ dependencies {
     androidTestImplementation(Dependencies.Libraries.Compose.compose_ui_test_junit)
     debugImplementation(Dependencies.Libraries.Compose.compose_ui_tooling)
     debugImplementation(Dependencies.Libraries.Compose.compose_ui_test_manifest)
-}
-
-kapt{
-    correctErrorTypes = true
 }

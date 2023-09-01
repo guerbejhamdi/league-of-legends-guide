@@ -3,7 +3,9 @@ package com.example.data.repository
 import android.util.Log
 import com.example.common.Resource
 import com.example.data.models.toChampion
+import com.example.data.models.champion_details.toChampionDetailsModel
 import com.example.data.remote.ChampionApi
+import com.example.domain.model.ChampionDetailsModel
 import com.example.domain.model.ChampionModel
 import com.example.domain.repository.ChampionRepository
 import kotlinx.coroutines.flow.Flow
@@ -23,6 +25,22 @@ class ChampionRepositoryImpl @Inject constructor(
             val champions = championsData.data.map { it.value.toChampion() }
             Log.d("ChampionRepositoryImpl", "getAllChampions: $champions")
             emit(Resource.Success(champions))
+        } catch (e: HttpException) {
+            emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred"))
+        } catch (e: IOException) {
+            emit(Resource.Error("Couldn't reach server. Check your internet connection"))
+        }
+    }
+
+    override suspend fun getChampionDetails(championId: String): Flow<Resource<ChampionDetailsModel>> = flow {
+        emit(Resource.Loading())
+        try {
+            val championData = championApi.getChampionDetailsById(championId)
+            val championDetails = championData.data[championId]?.toChampionDetailsModel()
+            Log.d("ChampionRepositoryImpl", "getChampionDetails: $championDetails")
+            championDetails?.let{
+                emit(Resource.Success(it))
+            }
         } catch (e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred"))
         } catch (e: IOException) {

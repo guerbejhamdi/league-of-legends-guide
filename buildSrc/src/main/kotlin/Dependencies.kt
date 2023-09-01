@@ -1,8 +1,8 @@
 object Dependencies {
 
     object Versions {
-        const val hiltVersion = "2.47"
-        const val hiltCompilerVersion = "2.47"
+        const val hiltVersion = "2.48"
+        const val hiltCompilerVersion = "2.48"
         const val hiltNavigationComposeVersion = "1.0.0-alpha03"
         const val coreKtxVersion = "1.9.0"
         const val lifecyleRuntimeKtx = "2.6.1"
@@ -16,6 +16,8 @@ object Dependencies {
         const val appcompatVersion = "1.6.1"
         const val materiel = "1.9.0"
         const val timber = "5.0.1"
+        const val okhttpVersion = "4.9.1"
+        const val glideVersion = "2.2.3"
     }
 
 
@@ -31,7 +33,8 @@ object Dependencies {
         const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
         const val android_materiel = "com.google.android.material:material:${Versions.materiel}"
         const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
-        const val okhttp = "com.squareup.okhttp3:okhttp:4.9.1"
+        const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttpVersion}"
+        const val glide = "com.github.skydoves:landscapist-glide:${Versions.glideVersion}"
 
         object AndroidX {
             const val android_core_ktx = "androidx.core:core-ktx:${Versions.coreKtxVersion}"
